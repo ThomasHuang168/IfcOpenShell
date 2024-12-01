@@ -83,6 +83,7 @@ option(WITH_RELATIONSHIP_VALIDATION "Build IfcConvert with option to validate ge
 option(USERSPACE_PYTHON_PREFIX "Installs IfcPython for the current user only instead of system-wide." OFF)
 option(ADD_COMMIT_SHA "Add commit sha and branch in version number, warning results in many rebuilds, requires git" OFF)
 option(VERSION_OVERRIDE "Override the version defined in IfcParse.h with the file VERSION in the repository root" OFF)
+OPTION(ENABLE_TESTS "Enable tests." ON)
 
 if (VERSION_OVERRIDE)
     file(READ "../VERSION" "RELEASE_VERSION_")
@@ -1175,6 +1176,9 @@ endif()
 
 if(BUILD_EXAMPLES)
     add_subdirectory(../src/examples examples)
+endif()
+if(ENABLE_TESTS)
+    add_subdirectory(../src/gtest gtest)
 endif()
 
 if(BUILD_IFCMAX)

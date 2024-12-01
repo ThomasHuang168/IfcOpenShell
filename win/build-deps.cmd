@@ -236,6 +236,16 @@ call :InstallCMakeProject "%DEPENDENCY_DIR%\%BUILD_DIR%" %BUILD_CFG%
 IF NOT %ERRORLEVEL%==0 GOTO :Error
 
 
+:gtest
+set DEPENDENCY_NAME=gtest
+set DEPENDENCY_DIR=%DEPS_DIR%\gtest
+call :GitCloneAndCheckoutRevision https://github.com/google/googletest.git "%DEPENDENCY_DIR%"
+IF NOT %ERRORLEVEL%==0 GOTO :Error
+cd "%DEPENDENCY_DIR%"
+git reset --hard
+git clean -fdx
+
+
 :mpir
 
 IF EXIST "%INSTALL_DIR%\mpir" (
