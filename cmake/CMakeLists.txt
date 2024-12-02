@@ -1178,7 +1178,7 @@ if(BUILD_EXAMPLES)
     add_subdirectory(../src/examples examples)
 endif()
 if(ENABLE_TESTS)
-    add_subdirectory(../src/gtest gtest)
+    add_subdirectory(../test test)
 endif()
 
 if(BUILD_IFCMAX)
